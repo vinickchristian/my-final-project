@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover trending movies and TV shows and find where to watch them." />
+  <title>Movie & TV Discovery Hub</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1 class="logo">Movie & TV Discovery Hub</h1>
+    <nav class="nav">
+      <button>Home</button>
+      <button>Search</button>
+      <button>Favorites</button>
+    </nav>
+  </header>
+
+  <main id="app">
+    <section class="search-section">
+      <label for="search-input">Search Movies or TV Shows</label>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search..."
+      />
+    </section>
+
+    <section class="trending-section">
+  <h2>Trending Movies</h2>
+  <div id="movies-container" class="card-grid">
+    <article class="card">
+      <div class="card-image"></div>
+      <h3>Movie Title</h3>
+      <p>Rating: ⭐ 8.5</p>
+    </article>
+
+    <article class="card">
+      <div class="card-image"></div>
+      <h3>Movie Title</h3>
+      <p>Rating: ⭐ 7.9</p>
+    </article>
+  </div>
+</section>
+
+<section class="trending-section">
+  <h2>Trending TV Shows</h2>
+  <div id="tv-container" class="card-grid">
+    <article class="card">
+      <div class="card-image"></div>
+      <h3>TV Show Title</h3>
+      <p>Rating: ⭐ 8.2</p>
+    </article>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Movie & TV Discovery Hub</p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
