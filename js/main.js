@@ -1,3 +1,5 @@
+import { getFavorites } from "./storage.js";
+
 import {
   getTrendingMovies,
   getTrendingTVShows,
@@ -13,16 +15,40 @@ document.addEventListener("DOMContentLoaded", async () => {
   const searchInput = document.getElementById("search-input");
   const searchResults = document.getElementById("search-results");
   const favoritesSection = document.getElementById("favorites-section");
+  
+let allMovies = [];
+let allTVShows = [];
+function applyFilters() {
+  const minRating = Number(ratingFilter.value);
+  const type = typeFilter.value;
+
+  const filteredMovies = allMovies.filter(
+    (movie) => movie.vote_average >= minRating
+  );
+
+  const filteredTV = allTVShows.filter(
+    (show) => show.vote_average >= minRating
+  );
+
+  if (type === "movie") {
+    renderCards(filteredMovies, moviesContainer, "movie");
+    tvContainer.innerHTML = "";
+  } else if (type === "tv") {
+    moviesContainer.innerHTML = "";
+    renderCards(filteredTV, tvContainer, "tv");
+  } else {
+    renderCards(filteredMovies, moviesContainer, "movie");
+    renderCards(filteredTV, tvContainer, "tv");
+  }
+}
+
 
   // Fetch and render trending movies
-  const movies = await getTrendingMovies();
-  console.log("Movies fetched:", movies);
-  renderCards(movies, moviesContainer);
+ allMovies = await getTrendingMovies();
+allTVShows = await getTrendingTVShows();
 
-  // Fetch and render trending TV shows
-  const tvShows = await getTrendingTVShows();
-  console.log("TV Shows fetched:", tvShows);
-  renderCards(tvShows, tvContainer);
+renderCards(allMovies, moviesContainer, "movie");
+renderCards(allTVShows, tvContainer, "tv");
 
   // Search functionality
   searchInput.addEventListener("input", async (e) => {
@@ -39,4 +65,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     renderCards(results, resultsContainer);
   });
+  const favoritesContainer = document.getElementById("favorites-container");
+const favoritesBtn = document.getElementById("nav-favorites");
+
+favoritesBtn.addEventListener("click", () => {
+  const favorites = getFavorites();
+  favoritesSection.classList.remove("hidden");
+  searchResults.classList.add("hidden");
+
+  renderCards(favorites, favoritesContainer);
+});
+const ratingFilter = document.getElementById("rating-filter");
+const typeFilter = document.getElementById("type-filter");
+
+
+ratingFilter.addEventListener("change", applyFilters);
+typeFilter.addEventListener("change", applyFilters);
+
+
+
 });

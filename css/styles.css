@@ -66,6 +66,17 @@ main {
   margin-top: 2rem;
   background-color: #eaeaea;
 }
+.filter-section {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.filter-section select {
+  padding: 0.4rem;
+}
+
 /* ===== Card Styling ===== */
 .card {
   background-color: #ffffff;
@@ -113,6 +124,50 @@ main {
   object-fit: cover;
   border-radius: 6px;
 }
+.card {
+  position: relative;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+}.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.favorite-btn {
+  transition: transform 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+}
+
+.providers {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 @media (min-width: 768px) {
   header {

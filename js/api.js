@@ -43,3 +43,20 @@ export async function searchTMDB(query, type = "movie") {
     return [];
   }
 }
+export async function getWatchProviders(id, type = "movie") {
+  try {
+    const response = await fetch(
+      `${TMDB_BASE_URL}/${type}/${id}/watch/providers?api_key=${TMDB_API_KEY}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Watch providers request failed");
+    }
+
+    const data = await response.json();
+    return data.results || {};
+  } catch (error) {
+    console.error(error);
+    return {};
+  }
+}
