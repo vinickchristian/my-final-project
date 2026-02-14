@@ -1,7 +1,7 @@
 import {
   getTrendingMovies,
   getTrendingTVShows,
-  searchTMDB
+  searchTMDB,
 } from "./api.js";
 import { renderCards } from "./ui.js";
 
@@ -14,15 +14,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   const searchResults = document.getElementById("search-results");
   const favoritesSection = document.getElementById("favorites-section");
 
-  
-  // Load trending content
+  // Fetch and render trending movies
   const movies = await getTrendingMovies();
-  const tvShows = await getTrendingTVShows();
-
+  console.log("Movies fetched:", movies);
   renderCards(movies, moviesContainer);
+
+  // Fetch and render trending TV shows
+  const tvShows = await getTrendingTVShows();
+  console.log("TV Shows fetched:", tvShows);
   renderCards(tvShows, tvContainer);
 
-  // Search logic
+  // Search functionality
   searchInput.addEventListener("input", async (e) => {
     const query = e.target.value.trim();
 
@@ -36,8 +38,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     favoritesSection.classList.add("hidden");
 
     renderCards(results, resultsContainer);
-    
   });
 });
-console.log("Movies:", movies);
-console.log("TV Shows:", tvShows);
