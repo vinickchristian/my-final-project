@@ -12,68 +12,41 @@
   <header class="header">
     <h1 class="logo">Movie & TV Discovery Hub</h1>
     <nav class="nav">
-  <button id="nav-home" aria-label="Go to home">Home</button>
-  <button id="nav-search" aria-label="Go to search">Search</button>
-  <button id="nav-favorites" aria-label="View favorites">Favorites</button>
-</nav>
-
+      <button id="nav-home">Home</button>
+      <button id="nav-search">Search</button>
+      <button id="nav-favorites">Favorites</button>
+    </nav>
   </header>
 
   <main id="app">
     <section class="search-section">
       <label for="search-input">Search Movies or TV Shows</label>
-     <input
+      <input
         type="text"
         id="search-input"
         placeholder="Search..."
-        aria-label="Search movies or TV shows"
       />
-
     </section>
 
     <section id="search-results" class="search-results hidden">
-  <h2>Search Results</h2>
-  <div class="card-grid" id="results-container">
-    <!-- Results will be injected here later -->
-  </div>
-</section>
+      <h2>Search Results</h2>
+      <div id="results-container" class="card-grid"></div>
+    </section>
 
-<section id="favorites-section" class="favorites hidden">
-  <h2>Your Favorites</h2>
-  <div id="favorites-container" class="card-grid">
-    <!-- Favorite items will appear here -->
-  </div>
-</section>
-
+    <section id="favorites-section" class="favorites hidden">
+      <h2>Your Favorites</h2>
+      <div id="favorites-container" class="card-grid"></div>
+    </section>
 
     <section class="trending-section">
-  <h2>Trending Movies</h2>
-  <div id="movies-container" class="card-grid">
-    <article class="card">
-      <div class="card-image"></div>
-      <h3>Movie Title</h3>
-      <p>Rating: ⭐ 8.5</p>
-    </article>
+      <h2>Trending Movies</h2>
+      <div id="movies-container" class="card-grid"></div>
+    </section>
 
-    <article class="card">
-      <div class="card-image"></div>
-      <h3>Movie Title</h3>
-      <p>Rating: ⭐ 7.9</p>
-    </article>
-  </div>
-</section>
-
-<section class="trending-section">
-  <h2>Trending TV Shows</h2>
-  <div id="tv-container" class="card-grid">
-    <article class="card">
-      <div class="card-image"></div>
-      <h3>TV Show Title</h3>
-      <p>Rating: ⭐ 8.2</p>
-    </article>
-  </div>
-</section>
-
+    <section class="trending-section">
+      <h2>Trending TV Shows</h2>
+      <div id="tv-container" class="card-grid"></div>
+    </section>
   </main>
 
   <footer class="footer">
